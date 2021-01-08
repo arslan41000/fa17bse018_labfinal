@@ -1,0 +1,36 @@
+Widget noNotesUI(BuildContext context) {
+  return ListView(
+    children: [
+      header(),
+      Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: Image.asset(
+              'crying_emoji.png',
+              fit: BoxFit.cover,
+              width: 200,
+              height: 200,
+            ),
+          ),
+          RichText(
+            text: TextSpan(
+              style: noNotesStyle,
+              children: [
+                TextSpan(text: ' There is no note available\nTap on "'),
+                TextSpan(
+                    text: '+',
+                    style: boldPlus,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        goToNoteEditScreen(context);
+                      }),
+                TextSpan(text: '" to add new note'),
+              ],
+            ),
+          )
+        ],
+      ),
+    ],
+  );
+}
